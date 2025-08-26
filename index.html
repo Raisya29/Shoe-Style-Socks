@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Style Socks - Kaos Kaki Unik dengan Desain Sepati | Bestbrand Shop</title>
+    <meta name="description" content="Kaos kaki unik dengan desain menyerupai sepatu, membuat penampilan lebih stylish dan berbeda! Nyaman dipakai, bahan lembut, tebal, dan cocok untuk gaya kasual.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-green: #1b4332;
+            --forest-green: #2d5a3d;
+            --gold: #d4af37;
+            --cream: #f5f5dc;
+            --white: #ffffff;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark-green);
+            background-color: var(--cream);
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .hero {
+            background: linear-gradient(rgba(27, 67, 50, 0.7), rgba(45, 90, 61, 0.7)), url('https://cdn.webfastcdn.com/image/67f6b4679f867f0843219b16a082b32400ecd2cf-600.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+        .price-original {
+            text-decoration: line-through;
+            color: #718096;
+        }
+        .testimonial-highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .testimonial-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox.show {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .social-proof-popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            padding: 15px;
+            z-index: 100;
+            transform: translateX(350px);
+            transition: transform 0.5s ease;
+        }
+        .social-proof-popup.show {
+            transform: translateX(0);
+        }
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .ooef {
+            background: linear-gradient(135deg, var(--forest-green), var(--dark-green));
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        .orderonline-embed-form {
+            font-family: 'Open Sans', sans-serif;
+        }
+        .orderonline-embed-form h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--cream);
+        }
+        .orderonline-embed-form button {
+            background-color: var(--gold);
+            color: var(--dark-green);
+            transition: all 0.3s ease;
+        }
+        .orderonline-embed-form button:hover {
+            background-color: #c19b2e;
+            transform: translateY(-2px);
+        }
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item {
+            flex: 0 0 auto;
+        }
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .carousel-dot.active {
+            background: var(--gold);
+        }
+        @media (max-width: 768px) {
+            .carousel-item {
+                width: 100%;
+            }
+            .social-proof-popup {
+                width: 250px;
+                right: 10px;
+            }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .carousel-item {
+                width: 50%;
+            }
+        }
+        @media (min-width: 1025px) {
+            .carousel-item {
+                width: 33.333%;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Hero Section -->
+    <section class="hero min-h-screen flex items-center justify-center text-center text-white">
+        <div class="container mx-auto px-4">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Shoe Style Socks</h1>
+            <p class="text-xl md:text-2xl mb-8">Kaos kaki unik dengan desain menyerupai sepatu, membuat penampilan lebih stylish dan berbeda!</p>
+            <div class="mb-8">
+                <span class="text-3xl md:text-4xl font-bold">Rp 138.900</span>
+                <span class="price-original text-xl ml-2">Rp 150.000</span>
+            </div>
+            <button onclick="scrollToOrder()" class="bg-gold text-dark-green font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-600 transition duration-300 transform hover:scale-105">
+                Pesan Sekarang
+            </button>
+            <div class="mt-10 flex justify-center space-x-6">
+                <div class="flex items-center">
+                    <svg class="w-6 h-6 text-white mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                    <span>Garansi 100%</span>
+                </div>
+                <div class="flex items-center">
+                    <svg class="w-6 h-6 text-white mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                    <span>Pengiriman Cepat</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Desain Unik yang Membuat Berbeda</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="flex justify-center">
+                    <img src="https://cdn.webfastcdn.com/image/67f6b4679f867f0843219b16a082b32400ecd2cf-600.jpeg" alt="Shoe Style Socks" class="rounded-lg shadow-lg w-full max-w-md">
+                </div>
+                <div class="flex flex-col justify-center">
+                    <h3 class="text-2xl font-semibold mb-4">Keunggulan Produk</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            Desain unik menyerupai sepatu
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            Bahan lembut dan nyaman dipakai
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            Cocok untuk gaya kasual dan santai
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            Tebal dan berkualitas tinggi
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+                <img src="https://cdn.webfastcdn.com/image/cac249ad3cd63db8d62b91830dd5561d55f46d19-600.jpeg" alt="Shoe Style Socks Gallery 1" class="rounded-lg cursor-pointer" onclick="openLightbox(this.src)">
+                <img src="https://cdn.webfastcdn.com/image/f0b5088c9eabc85f1044724e31041d0f382e34f8-600.jpeg" alt="Shoe Style Socks Gallery 2" class="rounded-lg cursor-pointer" onclick="openLightbox(this.src)">
+                <img src="https://cdn.webfastcdn.com/image/8eed88c27da12f9b50c09f1b97887123add42bd3.gif" alt="Shoe Style Socks GIF 1" class="rounded-lg cursor-pointer" onclick="openLightbox(this.src)">
+                <img src="https://cdn.webfastcdn.com/image/71e361f6a7aa2e70d1ddefc2d66849371e4cf64f.gif" alt="Shoe Style Socks GIF 2" class="rounded-lg cursor-pointer" onclick="openLightbox(this.src)">
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Harga Spesial untuk Anda</h2>
+            <p class="text-center text-xl mb-12">Beli Lebih Banyak, Hemat Lebih Banyak!</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-2xl font-semibold mb-4">1 Pasang</h3>
+                    <div class="mb-4">
+                        <span class="text-3xl font-bold text-green-700">Rp 138.900</span>
+                        <span class="price-original block">Rp 150.000</span>
+                    </div>
+                    <button onclick="scrollToOrder()" class="bg-green-600 text-white py-2 px-6 rounded-full hover:bg-green-700 transition">Pilih</button>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center border-2 border-gold transform scale-105">
+                    <h3 class="text-2xl font-semibold mb-4">2 Pasang</h3>
+                    <div class="mb-4">
+                        <span class="text-3xl font-bold text-green-700">Rp 157.800</span>
+                        <span class="price-original block">Rp 175.000</span>
+                    </div>
+                    <button onclick="scrollToOrder()" class="bg-gold text-dark-green py-2 px-6 rounded-full hover:bg-yellow-600 transition">Pilih</button>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-2xl font-semibold mb-4">5 Pasang</h3>
+                    <div class="mb-4">
+                        <span class="text-3xl font-bold text-green-700">Rp 199.000</span>
+                        <span class="price-original block">Rp 347.000</span>
+                    </div>
+                    <button onclick="scrollToOrder()" class="bg-green-600 text-white py-2 px-6 rounded-full hover:bg-green-700 transition">Pilih</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Apa Kata Pelanggan Kami?</h2>
+            <div class="carousel-container relative">
+                <div class="carousel-track" id="testimonialTrack">
+                    <!-- Testimonial 1 -->
+                    <div class="carousel-item p-4">
+                        <div class="testimonial-card bg-gray-50 p-6 rounded-lg shadow">
+                            <div class="flex items-center mb-4">
+                                <img src="https://i.pinimg.com/1200x/9c/d8/e5/9cd8e578a9f7bbb3513f34e58be921c0.jpg" alt="abu_dzaky" class="avatar mr-3">
+                                <div>
+                                    <h4 class="font-semibold">abu_dzaky</h4>
+                                    <div class="flex text-yellow-400">
+                                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-4">"Barang akhirnya datang. Pengiriman Cepat, Barang ok dah langganan di toko ini."</p>
+                            <img src="https://down-id.img.susercontent.com/file/id-11134103-7r98v-lz08b7u6ungl02.webp" alt="Testimonial media" class="w-20 h-20 object-cover rounded cursor-pointer" onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="carousel-item p-4">
+                        <div class="testimonial-card bg-gray-50 p-6 rounded-lg shadow">
+                            <div class="flex items-center mb-4">
+                                <img src="https://i.pinimg.com/1200x/1f/15/24/1f1524cb4dd79c7a493c8c36f54c1b45.jpg" alt="ummidz2607" class="avatar mr-3">
+                                <div>
+                                    <h4 class="font-semibold">ummidz2607</h4>
+                                    <div class="flex text-yellow-400">
+                                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-4">"Bagus kondisinya dan <span class="testimonial-highlight">kualitas nya</span>"</p>
+                            <img src="https://down-id.img.susercontent.com/file/id-11134103-7r98v-lxwbdc3nrkl9b0.webp" alt="Testimonial media" class="w-20 h-20 object-cover rounded cursor-pointer" onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="carousel-item p-4">
+                        <div class="testimonial-card bg-gray-50 p-6 rounded-lg shadow">
+                            <div class="flex items-center mb-4">
+                                <img src="https://i.pinimg.com/1200x/ee/77/7b/ee777b5aae6b008d359dc3a65d9669db.jpg" alt="hendy1480" class="avatar mr-3">
+                                <div>
+                                    <h4 class="font-semibold">hendy1480</h4>
+                                    <div class="flex text-yellow-400">
+                                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-4">"Makasih gan barangnya sudah diterima sesuai pesanan mantuuuullll"</p>
+                            <img src="https://down-id.img.susercontent.com/file/id-11134103-7r98z-m0bijxei19n0d5.webp" alt="Testimonial media" class="w-20 h-20 object-cover rounded cursor-pointer" onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+                </div>
+                <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md" onclick="moveCarousel(-1)">←</button>
+                <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md" onclick="moveCarousel(1)">→</button>
+            </div>
+            <div class="carousel-nav mt-6" id="carouselDots"></div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section id="orderForm" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Pesan Sekarang</h2>
+            <div class="ooef max-w-2xl mx-auto">
+                <!-- OrderOnline Embed Code -->
+                <div class="ooef">
+                    <form class="orderonline-embed-form" data-username="vera" data-product-slug="shoe-style-socks" data-product-id="68ad3ab38f7b4708ee03629d" id="oo-embed-form-shoe-style-socks-7240" data-origin="orderonline">
+                        <div class="ooef-loader"><style>.ooef-loader{visibility: hidden;opacity: 0;position: absolute;left: 0;right: 0;top: 0;bottom: 0;display: flex;justify-content: center;align-items: center;flex-direction: column;animation: ooLoadingIn 10s ease;-webkit-animation: ooLoadingIn 10s ease;animation-fill-mode: forwards;overflow: hidden}@keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}@-webkit-keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}.ooef-loader>div,.ooef-loader>div:after{border-radius: 50%;width: 2.5rem;height: 2.5rem}.ooef-loader>div{font-size: 10px;position: relative;text-indent: -9999em;border: .25rem solid #f5f5f5;border-left: .25rem solid #55c4cf;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);transform: translateZ(0);-webkit-animation: ooLoading 1.1s infinite linear;animation: ooLoading 1.1s infinite linear}.ooef-loader.error>div{border-left: .25rem solid #ff4500;animation-duration: 5s}@-webkit-keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}@keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}</style><div aria-live="polite" role="status"><div>Loading...</div></div></div>
+                    </form>
+                </div>
+                <script>
+                    if (typeof xLogError != 'function') {
+                        var xLogError = function (error) {
+                            var req = new XMLHttpRequest();
+                            var payload = JSON.stringify({ url: document.location.href, line: error.line, stack: error.stack });
+                            var params = 'message=' + encodeURIComponent(error.name) + '&payload=' + encodeURIComponent(payload) + '&type=embed&level=error';
+                            req.open('POST', 'https://api.orderonline.id/log', true);
+                            req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                            req.send(params);
+                        };
+                    }
+                    try {
+                        if (typeof xEmbedScript != 'function') {
+                            var xEmbedScript = function () {
+                                !function(w, d, e, v, id, t, s) {
+                                    if (d.getElementById(id)) return;
+                                    t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                                    s = d.getElementsByTagName(e)[0];
+                                    s.parentNode.insertBefore(t, s);
+                                }(window, document, 'script', 'https://cdn.orderonline.id/js/embed-v2-slim.min.js?v=8.0.4', 'oo-embed-js');
+                            };
+                        }
+                        if (typeof xEmbedInit != 'function') {
+                            var xEmbedInit = function (w, n) {
+                                if (w.ooe) return;
+                                n = w.ooe = function() {
+                                    n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                                };
+                                if (!w._ooe) w._ooe = n;
+                                n.push = n;n.loaded = !0;n.version = '8.0.4';n.queue = [];
+                            };
+                        }
+                        xEmbedInit(window);
+                        ooe('setup', 'redirect', 'https://vera.orderonline.id');
+                        ooe('init', '5f1a7807a9bf807d6c63d963', '68ad3ab38f7b4708ee03629d', '68ad3ab38f7b4708ee03629e', 'oo-embed-form-shoe-style-socks-7240', {"mode":"page","action":"Klik untuk pemesanan","title":"Form Pemesanan","triggerPixel":true,"triggerGtm":true});
+                        if (!window.jQuery) {
+                            !function(w, d, e, v, id, t, s) {
+                                if (d.getElementById(id)) return;
+                                t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                                t.addEventListener('load', xEmbedScript);
+                                s = d.getElementsByTagName(e)[0];
+                                s.parentNode.insertBefore(t, s);
+                            }(window, document, 'script', 'https://cdn.orderonline.id/js/vendor/jquery.min.js', 'oo-embed-jquery');
+                        } else {
+                            xEmbedScript();
+                        }
+                    } catch (e) {
+                        xLogError(e);
+                        throw e;
+                    }
+                </script>
+                <!-- End OrderOnline Embed Code -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <img class="lightbox-content" id="lightboxImg" src="" alt="">
+    </div>
+
+    <!-- Social Proof Popup -->
+    <div class="social-proof-popup" id="socialProofPopup">
+        <div class="flex items-center">
+            <img src="https://cdn.webfastcdn.com/image/67f6b4679f867f0843219b16a082b32400ecd2cf-600.jpeg" alt="Customer" class="avatar mr-3">
+            <div>
+                <p class="font-semibold" id="popupText"></p>
+                <p class="text-sm text-gray-500" id="popupTime"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll to order form
+        function scrollToOrder() {
+            document.getElementById('orderForm').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Lightbox functionality
+        function openLightbox(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(e) {
+            if (e) e.stopPropagation();
+            document.getElementById('lightbox').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const track = document.getElementById('testimonialTrack');
+        const items = document.querySelectorAll('.carousel-item');
+        const dotsContainer = document.getElementById('carouselDots');
+        
+        // Create dots
+        items.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        });
+        
+        function updateCarousel() {
+            let slideWidth;
+            if (window.innerWidth < 769) {
+                slideWidth = 100;
+            } else if (window.innerWidth < 1025) {
+                slideWidth = 50;
+            } else {
+                slideWidth = 33.333;
+            }
+            track.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+            
+            // Update dots
+            document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+        
+        function moveCarousel(direction) {
+            currentSlide = (currentSlide + direction + items.length) % items.length;
+            updateCarousel();
+        }
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+        
+        // Auto-scroll carousel
+        let carouselInterval = setInterval(() => moveCarousel(1), 5000);
+        
+        // Pause on hover
+        track.addEventListener('mouseenter', () => clearInterval(carouselInterval));
+        track.addEventListener('mouseleave', () => {
+            carouselInterval = setInterval(() => moveCarousel(1), 5000);
+        });
+        
+        // Initialize carousel
+        updateCarousel();
+        window.addEventListener('resize', updateCarousel);
+
+        // Social Proof Popup
+        const names = ['Vina', 'Dina', 'Kartika', 'Lestari', 'Putri', 'Maya Sari', 'Rani', 'Permata', 'Lestari F'];
+        const cities = ['Jakarta', 'Surabaya', 'Bandung', 'Medan', 'Bekasi', 'Tangerang', 'Depok', 'Semarang'];
+        
+        function showSocialProof() {
+            const name = names[Math.floor(Math.random() * names.length)];
+            const city = cities[Math.floor(Math.random() * cities.length)];
+            const minutes = Math.floor(Math.random() * 15) + 1;
+            
+            document.getElementById('popupText').textContent = `${name} dari ${city} baru saja memesan Shoe Style Socks`;
+            document.getElementById('popupTime').textContent = `${minutes} menit yang lalu`;
+            
+            const popup = document.getElementById('socialProofPopup');
+            popup.classList.add('show');
+            
+            let popupTimeout = setTimeout(() => {
+                popup.classList.remove('show');
+            }, 5000);
+            
+            popup.addEventListener('mouseenter', () => clearTimeout(popupTimeout));
+            popup.addEventListener('mouseleave', () => {
+                popupTimeout = setTimeout(() => {
+                    popup.classList.remove('show');
+                }, 2000);
+            });
+        }
+        
+        // Show first popup after 3 seconds, then every 8 seconds
+        setTimeout(showSocialProof, 3000);
+        setInterval(showSocialProof, 8000);
+    </script>
+</body>
+</html>
